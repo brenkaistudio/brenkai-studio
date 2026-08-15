@@ -1,0 +1,345 @@
+/* ==========================================================================
+   layout.css — container, sections, header, footer
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--page-x);
+}
+
+.section { padding-block: var(--section-y); }
+
+.section--tight { padding-block: var(--sp-16); }
+
+.section--surface { background-color: var(--bg-surface); }
+
+.section__head { margin-bottom: var(--sp-12); }
+
+.section__head .kicker { margin-bottom: var(--sp-4); }
+
+@media (min-width: 1024px) {
+  .section__head { margin-bottom: var(--sp-16); }
+  .section__head .kicker { margin-bottom: var(--sp-6); }
+}
+
+/* ==========================================================================
+   Header — duplicated across all 5 HTML files by decision (D18).
+   Changing it means editing every file. Check each one.
+   ========================================================================== */
+
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  transition: background-color var(--dur-base) var(--ease-out),
+              border-color var(--dur-base) var(--ease-out);
+  border-bottom: var(--border-w) solid transparent;
+}
+
+.header.is-stuck {
+  background-color: color-mix(in srgb, var(--bg-page) 82%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-6);
+  width: 100%;
+}
+
+/* Wordmark = symbol + name (D44).
+   44px is below the 64px floor set by D40, but that floor was measured with
+   the symbol standing ALONE. Beside the name it only has to accompany, and
+   the faceted silhouette still reads at 44px — verified. The inner </> is
+   lost at this size, which is fine; the name carries identification.
+   44px also equals the minimum tap target, so the whole lockup is one
+   comfortable target. */
+.wordmark {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--sp-3);
+  min-height: 44px;
+  line-height: 1;
+}
+
+.wordmark__mark {
+  width: 44px;
+  height: 44px;
+  flex: none;
+}
+
+.wordmark__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.wordmark__name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-title);
+}
+
+.wordmark__name span { color: var(--action); }
+
+.wordmark__sub {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: lowercase;
+  color: var(--text-muted);
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+/* --- Navigation ---------------------------------------------------------- */
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+.nav__link {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 500;
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.nav__link:hover { color: var(--text-title); }
+
+.nav__link[aria-current='page'] { color: var(--action); }
+
+/* --- Theme toggle -------------------------------------------------------- */
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 44px;   /* minimum tap target */
+  height: 44px;
+  border-radius: var(--radius-pill);
+  border: var(--border-w) solid var(--border);
+  color: var(--text-muted);
+  transition: color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
+}
+
+.theme-toggle:hover {
+  color: var(--text-title);
+  border-color: var(--border-hover);
+}
+
+.theme-toggle svg { width: 18px; height: 18px; }
+
+.theme-toggle__moon { display: none; }
+:root[data-theme='light'] .theme-toggle__sun { display: none; }
+:root[data-theme='light'] .theme-toggle__moon { display: block; }
+
+/* --- Mobile menu --------------------------------------------------------- */
+
+.menu-btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--text-title);
+}
+
+.menu-btn svg { width: 22px; height: 22px; }
+
+.menu-btn__close { display: none; }
+.menu-btn[aria-expanded='true'] .menu-btn__open { display: none; }
+.menu-btn[aria-expanded='true'] .menu-btn__close { display: block; }
+
+@media (max-width: 1023px) {
+  /* Below desktop the header is wordmark + toggle + menu button only.
+     The CTA lives inside the open menu (.nav__cta) instead — leaving it in
+     the bar pushes the menu button off the right edge.
+     Needs .header__actions to outrank `.btn { display: inline-flex }`. */
+  .header__actions .header__cta { display: none; }
+
+  /* The open menu is a fixed overlay, but it lives INSIDE .header in the
+     markup. The header is its own stacking context, so the menu would paint
+     over its own siblings — hiding the wordmark and, fatally, the close
+     button. Lifting them above the overlay keeps the menu closable. */
+  .wordmark,
+  .header__actions {
+    position: relative;
+    z-index: 45;
+  }
+
+  .nav {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--sp-16) var(--page-x) var(--sp-12);
+    background-color: var(--bg-page);
+    opacity: 0;
+    transform: scale(0.98);
+    visibility: hidden;
+    transition: opacity 250ms var(--ease-out),
+                transform 250ms var(--ease-out),
+                visibility 250ms;
+  }
+
+  .nav.is-open {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-6);
+  }
+
+  .nav__link {
+    font-family: var(--font-display);
+    font-size: var(--fs-display-md);
+    font-weight: 800;
+    letter-spacing: var(--ls-heading);
+    text-transform: none;
+    color: var(--text-title);
+  }
+
+  .nav__cta { margin-top: var(--sp-12); }
+}
+
+@media (min-width: 1024px) {
+  .menu-btn { display: none; }
+  /* Needs .nav to outrank `.btn { display: inline-flex }`, which loads
+     later in components.css. A bare .nav__cta loses that tie. */
+  .nav .nav__cta { display: none; }
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+  background-color: var(--bg-surface);
+  border-top: var(--border-w) solid var(--border);
+  padding-block: var(--sp-16) var(--sp-8);
+}
+
+.footer__grid {
+  display: grid;
+  gap: var(--sp-12);
+  margin-bottom: var(--sp-16);
+}
+
+@media (min-width: 768px) {
+  .footer__grid { grid-template-columns: 2fr 1fr 1fr; gap: var(--sp-8); }
+}
+
+/* The footer shows the symbol at its largest (D44). */
+.footer__logo {
+  width: 96px;
+  height: 96px;
+  margin-bottom: var(--sp-4);
+}
+
+.footer__text {
+  color: var(--text-muted);
+  font-size: var(--fs-body-sm);
+  max-width: 38ch;
+  margin-bottom: var(--sp-6);
+}
+
+/* padding-block on these link groups is what gets the tap target to 44px
+   without making the type bigger. Don't remove it. */
+.footer__email {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--action);
+  font-size: var(--fs-body-sm);
+  border-bottom: var(--border-w) solid transparent;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.footer__email:hover { border-bottom-color: currentColor; }
+
+.footer__title {
+  margin-bottom: var(--sp-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 500;
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  color: var(--text-decor);
+}
+
+/* gap is 0 on purpose: the 11px padding on each link supplies both the
+   44px tap target and the visual rhythm. Adding gap back double-spaces it. */
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.footer__links a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--text-muted);
+  font-size: var(--fs-body-sm);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.footer__links a:hover { color: var(--text-title); }
+
+.footer__social {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: var(--sp-2);
+  color: var(--text-muted);
+  font-size: var(--fs-body-sm);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.footer__social:hover { color: var(--action); }
+.footer__social svg { width: 18px; height: 18px; }
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding-top: var(--sp-8);
+  border-top: var(--border-w) solid var(--border);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  color: var(--text-decor);
+}

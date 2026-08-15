@@ -1,0 +1,29 @@
+# Lixo de sistema
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Configuração local do Claude Code — contém caminhos desta máquina e não
+# serve para mais ninguém. O "local" no nome é justamente isso.
+.claude/settings.local.json
+
+# Referências: prints do site anterior. Direção visual, não código.
+Ideiasbrenkai/
+
+# Original da logo em 1024px. Nenhuma página referencia — fica só como
+# reserva local para usos grandes (impressão, redes). Se quiser versionar
+# como backup, apague esta linha.
+assets/img/logo-full.png
+
+# Nunca versionar nem publicar: binários e mídia pesada não fazem parte
+# do site e iriam junto no deploy.
+*.exe
+*.msi
+*.zip
+*.rar
+*.mp4
+*.mov
+
+# Se um dia entrar alguma ferramenta com npm (hoje não há — ver D16)
+node_modules/

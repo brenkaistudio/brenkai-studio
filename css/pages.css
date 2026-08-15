@@ -1,0 +1,236 @@
+/* ==========================================================================
+   pages.css — page-specific layout
+   ========================================================================== */
+
+/* --- Page header (inner pages) ------------------------------------------- */
+
+.page-head {
+  padding-top: calc(var(--header-h) + var(--sp-16));
+  padding-bottom: var(--sp-16);
+}
+
+@media (min-width: 1024px) {
+  .page-head {
+    padding-top: calc(var(--header-h) + var(--sp-24));
+    padding-bottom: var(--sp-24);
+  }
+}
+
+.page-head .kicker { margin-bottom: var(--sp-6); }
+.page-head h1 { margin-bottom: var(--sp-8); }
+
+/* --- Hero (home) --------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  padding-top: calc(var(--header-h) + var(--sp-16));
+  padding-bottom: var(--sp-24);
+  overflow: hidden;
+}
+
+.hero__inner { position: relative; z-index: 1; }
+
+.hero .kicker { margin-bottom: var(--sp-6); }
+.hero h1 { margin-bottom: var(--sp-6); }
+.hero .lede { margin-bottom: var(--sp-8); }
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-4);
+}
+
+/* Decorative faceted shape — echoes the logo's geometry without redrawing
+   it. aria-hidden, so no contrast requirement. */
+.hero__shape {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: var(--radius-xl);
+  background-image: var(--gradient-glow);
+  filter: blur(60px);
+  opacity: 0.5;
+  inset: -10% -40% auto auto;
+  width: 90vw;
+  height: 60vh;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding-top: calc(var(--header-h) + var(--sp-32));
+    padding-bottom: var(--sp-32);
+  }
+  .hero__inner { max-width: 55%; }
+  .hero__shape {
+    inset: 0 -8% auto auto;
+    width: 42vw;
+    height: 78vh;
+    opacity: 0.55;
+  }
+}
+
+/* --- Work grid -----------------------------------------------------------
+   Asymmetric on desktop: the right column drops 96px. Below 768px it is a
+   plain stack, and description + tags are always visible (no hover-only
+   information for touch users).
+   ------------------------------------------------------------------------ */
+
+.work-grid {
+  display: grid;
+  gap: var(--sp-16);
+}
+
+@media (min-width: 768px) {
+  .work-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-16) var(--sp-12);
+  }
+  .work-grid > :nth-child(even) { margin-top: var(--sp-24); }
+}
+
+/* --- About --------------------------------------------------------------- */
+
+.about-grid { display: grid; gap: var(--sp-12); }
+
+@media (min-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-16);
+    align-items: center;
+  }
+}
+
+.about-grid__text p + p { margin-top: var(--sp-4); }
+.about-grid__text p { color: var(--text-muted); max-width: 54ch; }
+
+.about-visual {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  background-image: var(--gradient-glow);
+  opacity: 0.55;
+  filter: blur(2px);
+}
+
+/* On mobile the visual comes AFTER the text */
+@media (max-width: 1023px) {
+  .about-grid__visual { order: 2; }
+}
+
+.values-grid { display: grid; gap: var(--sp-6); }
+
+@media (min-width: 640px) { .values-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .values-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* --- Stats ---------------------------------------------------------------
+   Commented out in about.html until the first real project ships (D29).
+   Styles kept here so switching it on is a one-line change.
+   ------------------------------------------------------------------------ */
+
+.stats {
+  display: grid;
+  gap: var(--sp-8);
+  margin-top: var(--sp-16);
+}
+
+@media (min-width: 640px) { .stats { grid-template-columns: repeat(3, 1fr); } }
+
+.stats__num {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-md);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--action);
+}
+
+.stats__label {
+  margin-top: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 500;
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  color: var(--text-decor);
+}
+
+/* --- Contact ------------------------------------------------------------- */
+
+.contact-grid { display: grid; gap: var(--sp-12); }
+
+@media (min-width: 1024px) {
+  .contact-grid {
+    grid-template-columns: 2fr 1fr;
+    gap: var(--sp-16);
+    align-items: start;
+  }
+}
+
+.contact-card {
+  padding: var(--sp-8);
+  background-color: var(--bg-card);
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.contact-card__row {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-2);
+  font-size: var(--fs-body-sm);
+  color: var(--text-body);
+}
+
+.contact-card__row svg {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  margin-top: 2px;
+  color: var(--action);
+}
+
+.contact-card__note {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-6);
+  border-top: var(--border-w) solid var(--border);
+  font-size: var(--fs-body-sm);
+  color: var(--text-muted);
+}
+
+/* Giant decorative word behind the contact title. Hidden on mobile. */
+.contact-word {
+  position: absolute;
+  top: 40%;
+  right: 0;
+  z-index: 0;
+  display: none;
+  font-family: var(--font-display);
+  font-size: 22vw;
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: var(--ls-display);
+  text-transform: uppercase;
+  color: var(--bg-surface);
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) { .contact-word { display: block; } }
+
+.page-head--contact { position: relative; overflow: hidden; }
+.page-head--contact > .container { position: relative; z-index: 1; }
+
+/* --- Closing CTA --------------------------------------------------------- */
+
+.closing { text-align: center; }
+.closing__title { margin-bottom: var(--sp-8); }
+
+/* --- 404 ----------------------------------------------------------------- */
+
+.notfound {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  min-height: 70vh;
+  padding-top: var(--header-h);
+  gap: var(--sp-6);
+}

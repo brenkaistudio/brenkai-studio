@@ -1,0 +1,156 @@
+/* ==========================================================================
+   tokens.css — single source of design values
+   See specs/design.md §13. Never write a raw value in another stylesheet.
+   Components must use SEMANTIC ROLES (--bg-card, --text-body, --on-action),
+   never raw tokens (--ink-800, --action). That is what makes theming work
+   without duplicating a single component rule.
+   ========================================================================== */
+
+:root {
+  /* --- Colour: neutrals ------------------------------------------------- */
+  --ink-950: #0B0B0F;
+  --ink-900: #111116;
+  --ink-800: #17171E;
+  --ink-700: #22222C;
+  --ink-600: #33333F;
+  --ink-400: #6E6E7A;
+  --ink-300: #A1A1AD;
+  --ink-100: #E4E4E9;
+  --ink-50:  #F4F4F6;
+
+  /* --- Colour: brand (from the logo). DECORATIVE ONLY.
+         These fail contrast — 1.8:1 and 1.9:1. Never put text in them. --- */
+  --brand-blue:   #184890;
+  --brand-violet: #483078;
+  --brand-purple: #601878;
+
+  /* --- Colour: interface (lifted, AA-verified on --ink-950) ------------- */
+  --action:      #478AF5;  /* 5.8:1 */
+  --action-lift: #6FA4F8;  /* 7.8:1 — LIGHTENS on hover in dark theme */
+  --accent:      #D068F3;  /* 6.5:1 */
+  --alert:       #FF5C5C;
+
+  --gradient-text: linear-gradient(100deg, var(--action) 0%, var(--accent) 100%);
+  --gradient-glow: linear-gradient(100deg, var(--brand-blue) 0%, var(--brand-purple) 100%);
+
+  /* --- Colour: semantic roles — DARK THEME (default) -------------------- */
+  --bg-page:      var(--ink-950);
+  --bg-surface:   var(--ink-900);
+  --bg-card:      var(--ink-800);
+  --text-title:   var(--ink-50);
+  --text-body:    var(--ink-100);
+  --text-muted:   var(--ink-300);
+  --text-decor:   var(--ink-400);   /* >=24px only — 3.8:1 */
+  --border:       var(--ink-700);
+  --border-hover: var(--ink-600);
+  --focus-ring:   var(--action);
+  --on-action:    var(--ink-950);   /* text on the primary button */
+
+  /* --- Type ------------------------------------------------------------- */
+  --font-display: 'Archivo', 'Arial Black', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace;
+
+  --fs-display-xl: clamp(2.75rem, 1.5rem + 6.25vw, 8rem);
+  --fs-display-lg: clamp(2.25rem, 1.3rem + 4.75vw, 5.5rem);
+  --fs-display-md: clamp(1.875rem, 1.3rem + 2.9vw, 3.5rem);
+  --fs-heading:    clamp(1.5rem, 1.35rem + 0.75vw, 2rem);
+  --fs-marquee:    clamp(2rem, 1.4rem + 3vw, 3.5rem);
+  --fs-subheading: 1.25rem;
+  --fs-body-lg:    1.0625rem;
+  --fs-body:       1rem;
+  --fs-body-sm:    0.875rem;
+  --fs-mono:       0.75rem;
+
+  --lh-display: 0.92;
+  --lh-heading: 1.05;
+  --lh-body:    1.6;
+  --ls-display: -0.03em;
+  --ls-heading: -0.02em;
+  --ls-mono:    0.18em;
+  --ls-button:  0.08em;
+
+  /* --- Space ------------------------------------------------------------ */
+  --sp-1: 4px;    --sp-2: 8px;    --sp-3: 12px;   --sp-4: 16px;
+  --sp-6: 24px;   --sp-8: 32px;   --sp-12: 48px;  --sp-16: 64px;
+  --sp-24: 96px;  --sp-32: 128px; --sp-40: 160px; --sp-50: 200px;
+
+  --section-y:   var(--sp-24);
+  --page-x:      20px;
+  --content-max: 1440px;
+  --measure:     65ch;
+  --header-h:    64px;
+
+  /* --- Border & radius -------------------------------------------------- */
+  --border-w: 1px;
+  --radius-sm:   4px;
+  --radius-md:   8px;    /* form fields */
+  --radius-lg:   12px;   /* cards, image containers */
+  --radius-xl:   20px;
+  --radius-pill: 999px;  /* buttons — and only buttons */
+
+  /* --- Motion ----------------------------------------------------------- */
+  --dur-fast:   180ms;
+  --dur-base:   200ms;
+  --dur-slow:   400ms;
+  --dur-reveal: 500ms;
+  --ease-out:   cubic-bezier(0, 0, 0.2, 1);
+  --ease-image: cubic-bezier(.2, .8, .2, 1);
+}
+
+/* ==========================================================================
+   LIGHT THEME — only the semantic roles change.
+   The dark palette does NOT work inverted: --action would drop to 3.4:1 and
+   --accent to 3.0:1 on a light background. These are the DARK versions of the
+   same hues. Every value below is verified against #F4F4F6.
+   ========================================================================== */
+
+:root[data-theme="light"] {
+  --bg-page:      #F4F4F6;
+  --bg-surface:   #EAEAEE;
+  --bg-card:      #FFFFFF;
+  --text-title:   #0B0B0F;  /* 17.9:1 */
+  --text-body:    #22222C;  /* 14.5:1 */
+  --text-muted:   #55555F;  /*  6.6:1 */
+  --text-decor:   #8A8A94;  /*  3.1:1 — >=24px only */
+  --border:       #D8D8DE;
+  --border-hover: #B8B8C2;
+
+  --action:      #1E5FCC;   /* 5.4:1 */
+  --action-lift: #17499E;   /* 7.7:1 — DARKENS on hover in light theme */
+  --accent:      #9A2BC0;   /* 5.5:1 */
+  --alert:       #C41E1E;   /* 5.3:1 — #FF5C5C is only 2.8:1 here */
+  --on-action:   #FFFFFF;   /* 5.9:1 on --action */
+
+  /* Decorative shapes lighten: the raw logo colours would read as heavy
+     blotches on white. */
+  --brand-blue:   #A8C4EC;
+  --brand-violet: #BFB0E0;
+  --brand-purple: #D4AEE2;
+
+  --focus-ring: var(--action);
+}
+
+/* --- Responsive token overrides ----------------------------------------- */
+@media (min-width: 768px) {
+  :root { --page-x: 40px; }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-x: 80px;
+    --section-y: var(--sp-40);
+    --header-h: 80px;
+  }
+}
+
+/* Zeroing durations covers transitions. Marquees and IntersectionObserver
+   reveals are switched off separately — see base.css and js/reveal.js. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+    --dur-reveal: 0ms;
+  }
+}

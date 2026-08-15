@@ -1,0 +1,555 @@
+/* ==========================================================================
+   components.css — buttons, cards, fields, marquee, tags
+   ========================================================================== */
+
+/* --- Buttons -------------------------------------------------------------
+   Pill radius (D36). The primary button is the ONLY element in the whole
+   site allowed a filled saturated background — the entire palette lives in
+   the blue/purple band, so the CTA stands out by LUMINANCE, not by hue.
+   Give any card, tag or icon a filled colour background and the CTA dies.
+   ------------------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: var(--sp-4) var(--sp-8);
+  min-height: 44px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: var(--ls-button);
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.btn:hover svg { transform: translateX(3px); }
+.btn:active { transform: scale(0.98); }
+
+.btn--primary {
+  background-color: var(--action);
+  color: var(--on-action);
+}
+
+/* Dark theme: lightens. Light theme: darkens (tokens.css handles the swap).
+   Darkening in dark theme would drop the label to 4.1:1 — below AA. */
+.btn--primary:hover { background-color: var(--action-lift); }
+
+.btn--secondary {
+  border: var(--border-w) solid var(--border-hover);
+  color: var(--text-title);
+}
+
+.btn--secondary:hover {
+  border-color: var(--action);
+  color: var(--action);
+}
+
+.btn[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn--sm {
+  padding: var(--sp-3) var(--sp-6);
+  font-size: var(--fs-mono);
+  min-height: 40px;
+}
+
+/* Text link — the tertiary action */
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;   /* tap target */
+  gap: var(--sp-2);
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 500;
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  color: var(--action);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.link:hover::after { transform: scaleX(1); }
+.link svg { width: 14px; height: 14px; }
+
+/* --- Cards ---------------------------------------------------------------
+   No shadow, in either theme (D13). Depth comes from surface + border.
+   ------------------------------------------------------------------------ */
+
+.card {
+  padding: var(--sp-6);
+  background-color: var(--bg-card);
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-out);
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.card__title { margin-bottom: var(--sp-3); }
+
+.card__text {
+  color: var(--text-muted);
+  font-size: var(--fs-body-sm);
+}
+
+@media (min-width: 1024px) {
+  .card { padding: var(--sp-8); }
+}
+
+/* --- Numbered list (manifesto, process) ---------------------------------- */
+
+.numbered { display: grid; gap: var(--sp-8); }
+
+@media (min-width: 1024px) {
+  .numbered { gap: var(--sp-12); }
+}
+
+.numbered__item {
+  display: grid;
+  gap: var(--sp-3);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .numbered__item {
+    grid-template-columns: 80px 1fr;
+    gap: var(--sp-6);
+    align-items: start;
+  }
+}
+
+.numbered__num {
+  font-family: var(--font-display);
+  font-size: var(--fs-heading);
+  font-weight: 900;
+  color: var(--text-decor);
+  line-height: 1;
+}
+
+.numbered__body p {
+  margin-top: var(--sp-3);
+  color: var(--text-muted);
+  max-width: 58ch;
+}
+
+/* --- Service row ---------------------------------------------------------
+   Not a card: a row with a top divider. Only 2 services (D23), so each one
+   gets enlarged treatment — two thin rows would leave the page empty.
+   ------------------------------------------------------------------------ */
+
+.service {
+  display: grid;
+  gap: var(--sp-4);
+  padding-block: var(--sp-12);
+  border-top: var(--border-w) solid var(--border);
+}
+
+.service__num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 500;
+  letter-spacing: var(--ls-mono);
+  color: var(--text-decor);
+}
+
+.service__title { color: var(--text-title); }
+
+.service__text {
+  color: var(--text-muted);
+  max-width: 56ch;
+}
+
+.service__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-4);
+}
+
+@media (min-width: 1024px) {
+  .service {
+    grid-template-columns: 80px minmax(280px, 1fr) minmax(320px, 1.2fr);
+    gap: var(--sp-8);
+    align-items: start;
+    padding-block: var(--sp-16);
+  }
+  .service__num { padding-top: var(--sp-2); }
+}
+
+/* --- Tags ----------------------------------------------------------------
+   Outlined, never filled — a filled tag would compete with the CTA.
+   ------------------------------------------------------------------------ */
+
+.tag {
+  display: inline-block;
+  padding: var(--sp-1) var(--sp-3);
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* --- Project card --------------------------------------------------------
+   The image is the card. Description and tags stay permanently visible
+   below 1024px so nothing depends on hover for touch users.
+   ------------------------------------------------------------------------ */
+
+.project__media {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  aspect-ratio: 4 / 3;
+  background-color: var(--bg-card);
+  border: var(--border-w) solid var(--border);
+}
+
+/* Wraps the image only, on cards that are live somewhere.
+   tabindex="-1" keeps it out of the tab order: "View live site" below is
+   already the keyboard route to the same URL, and two stops on one card is
+   noise. The image keeps its alt, so screen readers still get the
+   description in browse mode. */
+.project__media-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.project__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.9);
+  transition: transform var(--dur-slow) var(--ease-image),
+              filter var(--dur-slow) var(--ease-image);
+}
+
+.project:hover .project__img {
+  transform: scale(1.02);
+  filter: saturate(1);
+}
+
+/* Placeholder block used until real project imagery exists (D33) */
+.project__placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: var(--sp-2);
+  text-align: center;
+  background-image: var(--gradient-glow);
+  opacity: 0.18;
+}
+
+.project__placeholder span {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  color: var(--text-title);
+}
+
+/* Demo badge — mandatory while no real client work exists (D22, S01) */
+.project__badge {
+  position: absolute;
+  top: var(--sp-3);
+  left: var(--sp-3);
+  padding: var(--sp-1) var(--sp-2);
+  background-color: var(--bg-page);
+  border: var(--border-w) solid var(--border-hover);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-title);
+}
+
+.project__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  margin-top: var(--sp-4);
+}
+
+.project__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-heading);
+  font-weight: 800;
+  letter-spacing: var(--ls-heading);
+  color: var(--text-title);
+}
+
+.project__meta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 500;
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  color: var(--text-decor);
+}
+
+.project__desc {
+  margin-top: var(--sp-3);
+  color: var(--text-muted);
+  font-size: var(--fs-body-sm);
+  max-width: 46ch;
+}
+
+.project__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+}
+
+/* Only on cards that are actually live somewhere. A visitable link is
+   stronger proof than any screenshot. */
+.project__live { margin-top: var(--sp-2); }
+
+/* --- Sticky stacking cards -----------------------------------------------
+   Each card sits in its own 85vh track and sticks while the next one slides
+   over it. The scale-down is written by js/stack.js — see that file for the
+   formula. Without JS the cards still stack and stick; they just don't shrink.
+
+   The card needs an opaque surface, otherwise the one underneath shows
+   through and the stack reads as overlapping text. This is the one place a
+   project card gets a background (design.md §7 otherwise says the image IS
+   the card).
+   ------------------------------------------------------------------------ */
+
+.stack__item {
+  height: 85vh;
+  /* The sticky child resolves against this track, not the section */
+  position: relative;
+}
+
+.stack__card {
+  position: sticky;
+  /* 6rem base + 28px per card, so the stacked edges stay visible */
+  top: calc(6rem + var(--stack-i, 0) * 28px);
+  display: grid;
+  gap: var(--sp-6);
+  padding: var(--sp-6);
+  background-color: var(--bg-card);
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius-lg);
+  /* Scaling from the top edge keeps the stacked headers aligned */
+  transform-origin: 50% 0%;
+  will-change: transform;
+}
+
+.stack__card .project__media { aspect-ratio: 16 / 10; }
+
+.stack__card .project__foot { margin-top: 0; }
+
+@media (min-width: 768px) {
+  .stack__card {
+    grid-template-columns: 1.15fr 1fr;
+    align-items: center;
+    gap: var(--sp-8);
+    padding: var(--sp-8);
+  }
+}
+
+@media (min-width: 1024px) {
+  .stack__card { top: calc(8rem + var(--stack-i, 0) * 28px); }
+}
+
+/* Reduced motion: no scale, and the tracks collapse so the section stops
+   demanding 85vh of scroll per card. */
+@media (prefers-reduced-motion: reduce) {
+  .stack__item { height: auto; margin-bottom: var(--sp-12); }
+  .stack__card { position: static; transform: none; will-change: auto; }
+}
+
+/* --- Marquee -------------------------------------------------------------
+   Pauses on hover and on focus. Fully stopped under reduced motion.
+   ------------------------------------------------------------------------ */
+
+.marquee {
+  overflow: hidden;
+  padding-block: var(--sp-6);
+  border-block: var(--border-w) solid var(--border);
+  background-color: var(--bg-surface);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 40s linear infinite;
+}
+
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track { animation-play-state: paused; }
+
+.marquee__group {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  padding-right: var(--sp-8);
+  flex: none;
+}
+
+.marquee__item {
+  font-family: var(--font-display);
+  font-size: var(--fs-marquee);
+  font-weight: 800;
+  letter-spacing: var(--ls-heading);
+  text-transform: uppercase;
+  color: var(--text-title);
+  white-space: nowrap;
+}
+
+.marquee__dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  background-color: var(--accent);
+  transform: rotate(45deg);
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; }
+  .marquee { overflow-x: auto; }
+}
+
+@media (max-width: 767px) {
+  .marquee__track { animation-duration: 80s; }
+  .marquee__item { font-size: 2rem; }
+}
+
+/* --- Form ----------------------------------------------------------------
+   Fields use --radius-md (8px), NOT pill. Pill signals action; a rounded
+   rectangle signals data entry. Same radius on both turns the form into
+   a soup of capsules.
+   ------------------------------------------------------------------------ */
+
+.field { margin-bottom: var(--sp-6); }
+
+.field__label {
+  display: block;
+  margin-bottom: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 500;
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.field__req { color: var(--accent); }
+
+.field__input,
+.field__textarea {
+  width: 100%;
+  padding: var(--sp-3) var(--sp-4);
+  min-height: 48px;
+  background-color: var(--bg-card);
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-body);
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.field__textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.field__input::placeholder,
+.field__textarea::placeholder { color: var(--text-decor); }
+
+.field__input:hover,
+.field__textarea:hover { border-color: var(--border-hover); }
+
+.field__input:focus,
+.field__textarea:focus {
+  outline: none;
+  border-color: var(--action);
+  box-shadow: 0 0 0 1px var(--action);
+}
+
+.field__input[aria-invalid='true'],
+.field__textarea[aria-invalid='true'] { border-color: var(--alert); }
+
+/* Errors are never communicated by colour alone — there is always text. */
+.field__error {
+  display: block;
+  margin-top: var(--sp-2);
+  font-size: var(--fs-body-sm);
+  color: var(--alert);
+}
+
+.field__error:empty { display: none; }
+
+/* Honeypot — hidden from humans, left in the tab order out of the way */
+.field--trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form__note {
+  margin-top: var(--sp-4);
+  font-size: var(--fs-body-sm);
+  color: var(--text-muted);
+  max-width: 46ch;
+}
+
+.form__status {
+  margin-top: var(--sp-4);
+  font-size: var(--fs-body-sm);
+}
+
+.form__status--ok { color: var(--action); }
+.form__status--err { color: var(--alert); }

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Replace with the production URL at deploy (pendência #10)
+Sitemap: [PLACEHOLDER: production URL]/sitemap.xml
