@@ -1,4 +1,4 @@
-/* ==========================================================================
+/* ========================================================================== 
    tokens.css — single source of design values
    See specs/design.md §13. Never write a raw value in another stylesheet.
    Components must use SEMANTIC ROLES (--bg-card, --text-body, --on-action),
@@ -45,6 +45,39 @@
   --border-hover: var(--ink-600);
   --focus-ring:   var(--action);
   --on-action:    var(--ink-950);   /* text on the primary button */
+
+  /* --- Hero demo exception (D49) ----------------------------------------
+     The browser and the fictional client site are a contained visual demo.
+     They may use their own black/gold palette, glow and depth while the
+     Brenkai UI outside this component continues to use semantic roles only. */
+  --hero-browser-bg: #09090D;
+  --hero-browser-chrome: #0D0D12;
+  --hero-browser-border: rgba(255, 255, 255, 0.13);
+  --hero-browser-muted: #777987;
+  --hero-browser-dot: #41414C;
+  --hero-browser-shadow: 0 48px 90px rgba(0, 0, 0, 0.48), 0 18px 38px rgba(0, 0, 0, 0.30);
+  --hero-demo-bg: #050504;
+  --hero-demo-bg-soft: #11100D;
+  --hero-demo-title: #F3EEE5;
+  --hero-demo-body: #8D867B;
+  --hero-demo-muted: #756E62;
+  --hero-demo-gold: #D8B66D;
+  --hero-demo-gold-lift: #F1D08A;
+  --hero-demo-gold-dark: #8E672D;
+  --hero-demo-gold-deep: #5E3B16;
+  --hero-demo-border: rgba(214, 180, 111, 0.18);
+  --hero-demo-flame: #FF9B2F;
+  --hero-demo-flame-hot: #FFD98A;
+  --hero-demo-flame-deep: #B94D0B;
+  --hero-demo-serif: Georgia, 'Times New Roman', serif;
+  --hero-browser-radius: 24px;
+  --hero-browser-chrome-h: 48px;
+  --hero-stage-min: 560px;
+  --hero-perspective: 1400px;
+  --hero-dur-arrive: 1600ms;
+  --hero-dur-build: 850ms;
+  --hero-dur-float: 6000ms;
+  --hero-ease: cubic-bezier(.16, .78, .18, 1);
 
   /* --- Type ------------------------------------------------------------- */
   --font-display: 'Archivo', 'Arial Black', system-ui, sans-serif;
@@ -98,7 +131,7 @@
   --ease-image: cubic-bezier(.2, .8, .2, 1);
 }
 
-/* ==========================================================================
+/* ========================================================================== 
    LIGHT THEME — only the semantic roles change.
    The dark palette does NOT work inverted: --action would drop to 3.4:1 and
    --accent to 3.0:1 on a light background. These are the DARK versions of the
