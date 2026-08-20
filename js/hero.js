@@ -33,8 +33,6 @@ if (hero && demo && browser && premium) {
     </div>
   `);
 
-  browser.insertAdjacentHTML('beforeend', '<div class="hero-demo__flash" aria-hidden="true"></div>');
-
   requestAnimationFrame(() => {
     hero.classList.add('hero--play');
     demo.classList.add('hero-demo--play');

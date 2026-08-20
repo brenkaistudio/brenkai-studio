@@ -1,0 +1,19 @@
+# Normaliza fim de linha no repositório.
+#
+# Por que existe: os commits do hero chegaram com CRLF enquanto o resto do
+# projeto usava LF. O conteúdo era idêntico, mas o `.claude/check.js`
+# comparava bytes e acusou o header como divergente entre as páginas.
+# Com esta regra o git guarda tudo em LF e cada máquina usa o que preferir
+# na cópia local — a divergência não volta.
+
+* text=auto eol=lf
+
+# Binários: nunca converter, senão corrompe.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.woff2 binary
+*.ico binary
+*.mp4 binary
