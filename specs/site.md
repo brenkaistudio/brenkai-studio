@@ -324,10 +324,29 @@ Verificado antes de aceitar:
 | LCP | < 2.0s |
 | CLS | < 0.05 |
 | INP | < 200ms |
-| JS total (não comprimido) | **< 18 KB por página** |
-| CSS total (não comprimido) | < 45 KB |
+| **CSS por página, comprimido** | **≤ 20 KB** |
+| **JS por página, comprimido** | **≤ 8 KB** |
 
-O orçamento subiu de 15 KB para 18 KB de JS e de 40 KB para 45 KB de CSS por causa do alternador de tema e do segundo conjunto de tokens (D37).
+### Por que o orçamento é medido comprimido (D50)
+
+Até 17/08/2026 o orçamento era medido **sem compressão** — 45 KB de CSS e 18 KB de JS. Esse número era um indicador indireto: servia para impedir que alguém despejasse um framework no projeto, não para descrever o que o visitante baixa.
+
+Ele parou de medir a coisa certa quando o hero da Home entrou. O `hero.css` tem 16,5 KB sem compressão e **3,4 KB comprimido** — encolhe 79%, porque CSS repetitivo comprime muito bem. Pela régua antiga a Home reprovava por 12,6 KB; pela régua real ela transfere 15,6 KB e sobra folga.
+
+Vercel e Netlify servem tudo com gzip ou brotli por padrão, então **o número comprimido é o que existe na vida real**. Medir o outro é medir um arquivo que nunca sai do disco.
+
+Estado atual, verificado:
+
+| Página | CSS gzip | JS gzip |
+|---|---|---|
+| `/` (com hero) | 15,6 KB | 4,5 KB |
+| `/services` `/work` `/about` | 12,2 KB | 2,6 KB |
+| `/contact` | 12,2 KB | 3,8 KB |
+| `404` | 12,2 KB | 1,4 KB |
+
+**O que o orçamento não mede.** Peso não é a única forma de um componente custar caro. O `hero.css` traz 8 `filter`, 4 `blur()`, 5 `box-shadow` e 3 `perspective` — isso pesa na CPU e na GPU a cada quadro, não na rede. É o **INP** que captura esse custo, não os quilobytes. Ao avaliar uma seção nova, olhar as duas coisas.
+
+Rodar `node .claude/check.js` para conferir os orçamentos por página.
 
 **Regras:**
 - HTML estático puro — não há etapa de build.
