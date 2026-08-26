@@ -137,7 +137,7 @@
 .stats__num {
   font-family: var(--font-display);
   font-size: var(--fs-display-md);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1;
   color: var(--action);
 }
@@ -206,7 +206,7 @@
   display: none;
   font-family: var(--font-display);
   font-size: 22vw;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 0.8;
   letter-spacing: var(--ls-display);
   text-transform: uppercase;

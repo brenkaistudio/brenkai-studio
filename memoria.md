@@ -17,7 +17,7 @@ Regra de atualização: depois de cada decisão importante aprovada, adicionar a
 | D04 | **Objetivo: portfólio e credibilidade** | Não é venda direta. Sem checkout, preço ou catálogo |
 | D05 | **CTA primário único: `Start a project` → `/contact`** | Rótulo fixo. Sem variações em botões primários |
 | ~~D06~~ | ~~Stack: Next.js (App Router) + TypeScript + Tailwind CSS~~ | ❌ **Substituída em 05/08/2026 por D16.** Mantida aqui por rastreabilidade |
-| D07 | **Tipografia: grotesca geométrica ousada.** Archivo (display) + Inter (corpo) + JetBrains Mono (acento) | Mantém a atmosfera da referência sem usar a fonte dela |
+| ~~D07~~ | ~~Tipografia: Archivo (display) + Inter (corpo) + JetBrains Mono (acento)~~ | ❌ **Substituída em 25/08/2026 por D53.** Mantida para rastreabilidade |
 | D08 | **Não há conteúdo real.** Tudo entra como `[PLACEHOLDER]` marcado | Sem textos finais, sem projetos reais, sem imagens próprias |
 
 ### Decisões de identidade visual (05/08/2026)
@@ -52,7 +52,7 @@ Regra de atualização: depois de cada decisão importante aprovada, adicionar a
 | D24 | **Equipe de 3: Kaique, Brian e Renato.** Copy em "we" | Funções de cada um ainda pendentes (#5) |
 | D25 | **E-mail: `brenkaistudio@gmail.com`** | Funciona hoje, sem custo |
 | D26 | **Eu escrevo o rascunho completo da copy**, sem afirmação factual verificável | Onde faltar fato real, fica `[PLACEHOLDER]` visível. O usuário edita depois |
-| ~~D27~~ | ~~Header usa só a marca tipográfica, sem símbolo~~ | ❌ **Substituída em 05/08/2026 por D44.** A parte tipográfica continua: `BRENKAI` em Archivo 900 + `studio` em JetBrains Mono, agora **ao lado** do símbolo a 44px |
+| ~~D27~~ | ~~Header usa só a marca tipográfica, sem símbolo~~ | ❌ **Substituída em 05/08/2026 por D44.** A tipografia citada originalmente também foi substituída pela D53 |
 | D28 | **Sem seção de equipe na About.** Nenhum nome, função ou foto no site | Copy segue em "we" (D24), mas não identifica ninguém |
 | D29 | **Seção de métricas construída por completo, porém comentada no HTML.** Entra no ar ao entregar o 1º projeto | O usuário quer números reais que cresçam a cada projeto. Como hoje o valor real é zero, publicar seria inventar ou exibir zero. Comentar resolve os dois |
 | D30 | **Rodapé com um único link social: Instagram `@brenkaistudio`** → `https://instagram.com/brenkaistudio`, nova aba, `rel="noopener noreferrer"` | Sem Twitter, LinkedIn ou GitHub |
@@ -68,7 +68,7 @@ Rodada em que o usuário revisou, uma a uma, as decisões que eu havia proposto 
 
 | # | Decisão | Contexto |
 |---|---|---|
-| D07 | ✅ **Trio tipográfico confirmado:** Archivo (display) + Inter (corpo) + JetBrains Mono (acento) | Archivo chega ao peso 900 e tem eixo de largura; Space Grotesk foi rejeitada por parar em 700 |
+| ~~D07~~ | ~~Trio tipográfico: Archivo (display) + Inter (corpo) + JetBrains Mono (acento)~~ | ❌ **Substituída em 25/08/2026 por D53**, após comparação visual em protótipo |
 | D36 | **Botões em formato pílula (`radius: 999px`).** Campos de formulário ficam em 8px | **Substitui D10.** Sinalizado que pílula é o gesto mais reconhecível da referência e que mantê-la contraria a R07; o usuário optou por mantê-la mesmo assim. Campos seguem retangulares para preservar a distinção entre ação e entrada de dado |
 | D37 | **Dois temas: escuro e claro, com alternador no header.** Preferência salva em `localStorage`, `prefers-color-scheme` na primeira visita | **Substitui D12.** Sinalizado antes de alterar que a paleta escura reprova invertida (`--action` cai para 3.4:1 e `--accent` para 3.0:1 sobre fundo claro). Resolvido com um conjunto completo de tokens claros, todos reverificados — ver S13 |
 
@@ -94,6 +94,7 @@ Rodada em que o usuário revisou, uma a uma, as decisões que eu havia proposto 
 | D51 | **`.gitattributes` com `* text=auto eol=lf`** e binários marcados | Os commits do hero chegaram com CRLF enquanto o resto do projeto usava LF. O conteúdo era idêntico, mas o `check.js` comparava bytes e acusou o header como divergente. O `check.js` passou a normalizar CRLF e espaços finais antes de comparar, e o `.gitattributes` impede a recorrência |
 | D48 | **Obsidian Ink entra na `/work` e no Selected work da Home**, no lugar do Halcyon, com imagem e link ao vivo para `https://obsidian-ink-kappa.vercel.app/` | Segundo modelo próprio. Telefone `(305) 555-0183` está na faixa fictícia reservada, então é demonstração e a tag `DEMO` **continua obrigatória** (D22). Stack real: página única com 8 seções ancoradas, React 18 via CDN unpkg e 2 canvas WebGL2 (o lettering 3D). Tags: React · WebGL · Vercel. Subtítulo da `/work` passou de "The first one is live" para "The first two are live". **Atlas permanece** como terceiro card fictício, por decisão do usuário |
 | D52 | **O site "antes" sai do hero.** A maquete passa a mostrar apenas o site premium, com sua animação de entrada | Pedido do usuário. Removidos: o markup `.hero-demo__basic` do `index.html`, todas as regras `.hero-demo__basic*`, os `@keyframes hero-basic-out` e `hero-flash`, o bloco `.hero-demo__flash` e a injeção do flash no `js/hero.js` — o clarão existia só para mascarar a troca entre os dois sites. **Animação retemporizada:** o premium entrava aos 2,4s porque esperava o básico sair; agora entra aos 0,75s e o planeta aos 0,95s, construindo enquanto o navegador ainda assenta |
+| D53 | **Tipografia oficial: Space Grotesk 700 (display) + Inter (corpo) + JetBrains Mono (acento).** Fontes variáveis self-hosted em WOFF2, subset latino; sem CDN | **Substitui D07, reverte R20 e atualiza a parte tipográfica da D44.** O usuário comparou a combinação em protótipo isolado e confirmou explicitamente a troca. Pesos 800/900 foram ajustados para 700 para evitar negrito sintético |
 | D47 | ✅ **Confirmado funcionando pelo usuário em 07/08/2026.** Efeito de cards empilhados (sticky stacking) no Selected work da Home, com 3 cards. Track de 85vh por card, `position: sticky` em `calc(6rem + i*28px)` (8rem no desktop), escala `1 - (total-1-i)*0.03` → 0,94 / 0,97 / 1,00 | **Pedido originalmente com Framer Motion, que exige React + npm + build e desfaria a D16.** Contradição sinalizada antes de qualquer alteração; o usuário optou por manter a D16 e reproduzir o efeito sem framework. Feito em CSS + `js/stack.js` (2,6 KB): um listener de scroll com `requestAnimationFrame` faz o que `useScroll`/`useTransform` fazem por baixo. Atlas subiu para a Home para o efeito ter profundidade — com 2 cards a diferença seria de só 3% |
 | D46 | **Copy ampliada sobre a stack.** A Services deixa de dizer "hand-written HTML, CSS e JavaScript" como única forma e passa a "escolhemos a ferramenta mais simples que o projeto exige — muitas vezes HTML puro, às vezes um framework". A About passa a falar de "este site" em vez de todo trabalho | O BrightSmile é Next.js + Tailwind, o que contradizia frontalmente a copy anterior. Contradição sinalizada antes de alterar. O diferencial preservado é o que continua verdadeiro: nada de page builder e nada de template comprado |
 | D44 | **Símbolo entra no header, a 44px, ao lado do nome.** Rodapé sobe de 64px para 96px. Asset único em 192px (26 KB) serve os dois | **Substitui a D27 e flexibiliza a D40.** Antes de alterar, renderizei o símbolo em 32/40/44/48/56px ao lado do nome sobre o fundo real: a partir de 44px a silhueta facetada lê bem. O piso de 64px da D40 tinha sido medido com o símbolo **sozinho** — ao lado do nome ele só acompanha, e o nome carrega a identificação. 44px também coincide com o alvo mínimo de toque, então o conjunto vira um alvo confortável |
@@ -122,7 +123,7 @@ Rodada em que o usuário revisou, uma a uma, as decisões que eu havia proposto 
 | R18 | Banco de imagens gratuito (Unsplash/Pexels) e blocos gráficos abstratos para os cards de `/work` | Optou-se por `[PLACEHOLDER]` (D33). Banco de imagens já era proibido pela seção 12 do design.md |
 | R19 | Página de privacidade completa; nenhum aviso | Aviso curto no formulário (D34) |
 | R26 | **Framer Motion / migrar o site para React** para o efeito de empilhamento | Desfaria a D16, que é a decisão mais deliberada do projeto. O efeito inteiro cabe em 2,6 KB de JS próprio — ver D47 |
-| R20 | Space Grotesk como display; só Archivo + Inter sem monoespaçada | Space Grotesk para em 700 e não sustenta os títulos display; dispensar a monoespaçada derrubaria junto o gesto característico (D11) |
+| ~~R20~~ | ~~Space Grotesk como display~~ | ↩️ **Revertida em 25/08/2026 por D53.** A JetBrains Mono foi preservada; somente a fonte display mudou |
 | R21 | Botões com raio de 6px, cantos retos ou 12px | Optou-se por pílula (D36) |
 | R22 | Site só escuro; tema seguindo a preferência do sistema sem botão | Optou-se por alternador explícito (D37) |
 | R23 | Sombra só no tema claro; sombra sutil nos dois temas | D13 mantida: sem sombra em lugar nenhum |
@@ -142,6 +143,7 @@ Rodada em que o usuário revisou, uma a uma, as decisões que eu havia proposto 
 | 05/08/2026 | **Validação visual (D36, D37).** Botões passam a pílula: seções 0, 5, 6, 12 e 13 do design.md ajustadas. Tema claro adicionado: nova subseção de paleta clara com 14 valores verificados na seção 2, blocos `[data-theme="light"]` e script anti-flash na seção 13, alternador documentado no header. Em site.md: header, funcionalidades, árvore de arquivos, regras de implementação, acessibilidade, orçamentos (JS 15→18 KB, CSS 40→45 KB) e escopo |
 | 05/08/2026 | **Rodada de pendências (D20–D27).** Paleta inteira do design.md substituída pela derivada da logo, com nova camada de cores brutas × de interface e dois gradientes separados; seções 0, 1, 2, 3, 6, 7, 8, 11, 12 e 13 do design.md ajustadas. Em site.md: `/services` de 5 para 2 disciplinas com seção de processo nova, proposta de valor e equipe atualizadas, tabela de pendências reescrita com estado por item e nota técnica sobre a logo |
 | 05/08/2026 | **Troca de stack (D16).** Atualizados os 4 arquivos: CLAUDE.md ganhou a seção "Regras da stack sem build"; site.md teve a seção 10 reescrita (tabela de stack, árvore de arquivos, regras) e ajustes nas seções 4, 7, 9 e 13; design.md teve a seção 3 ajustada e ganhou a seção 13 com o esqueleto de `tokens.css`; memoria.md registrou D16–D19, R08–R09 e o rebaixamento de D06/R05 |
+| 25/08/2026 | **Troca tipográfica oficial (D53).** Space Grotesk substituiu Archivo em títulos e marca tipográfica; Inter e JetBrains Mono foram preservadas. As três fontes variáveis foram instaladas localmente em WOFF2, os pesos display foram normalizados para 700 e o protótipo temporário foi removido |
 
 ---
 
@@ -170,7 +172,7 @@ Rodada em que o usuário revisou, uma a uma, as decisões que eu havia proposto 
 | P22 | **Alvos de toque abaixo de 44×44**, contrariando a seção 11 de @specs/site.md: alternador de tema (40×40), logotipo (30px de altura), links do rodapé (22px), e-mail, Instagram e o link "View all" | ✅ Corrigido — ver S21 |
 | P24 | **Codificação dos 5 HTML corrompida** ao usar `Get-Content`/`Set-Content` do PowerShell 5.1 para uma substituição em massa: ele lê como ANSI e grava como UTF-8, gerando duplo encode (`—` virou `â€"`, `·` virou `Â·`) | ✅ Corrigido e prevenido — ver S22 |
 | P25 | **A logo tinha 1,5 MB** para ser exibida a 64px no rodapé | ✅ Corrigido — ver S23 |
-| P23 | **As fontes não estão no projeto.** Archivo, Inter e JetBrains Mono precisam ser baixadas em `.woff2` — não consigo baixar binários daqui | ⚠️ **Aberta** — pendência #16. O site funciona com fontes do sistema até lá |
+| P23 | **As fontes não estavam no projeto.** | ✅ Resolvido em 25/08/2026 — Space Grotesk, Inter e JetBrains Mono instaladas localmente em WOFF2; ver D53 |
 | P17 | **O símbolo é ilegível a 32px.** Verificado: o `</>` central desaparece e as facetas viram ruído. A 64px já lê como forma | ⚠️ **Parcialmente aberto** — resolve o header (S16), mas o **favicon** continua sem solução |
 | P16 | Tema aplicado por JS causa flash de tema errado antes da primeira pintura | ✅ Resolvido — ver S15 |
 | P14 | **A `/work` ficou fraca.** Casos demonstrativos (D22) com imagens em `[PLACEHOLDER]` (D33): a página de prova não tem prova nem imagem | ⚠️ **Bem melhor, ainda aberto.** O BrightSmile (D45) é um site real, completo e navegável, com link ao vivo — prova bem mais forte que qualquer print. Faltam a imagem do card (#18) e os outros 2 cards, que seguem fictícios |
@@ -230,7 +232,7 @@ Bloqueiam a redação final da copy e o início do desenvolvimento. Espelhado na
 
 **Novas — surgiram da verificação da logo e da construção:**
 
-- [ ] **#16 — Baixar as fontes.** Archivo, Inter e JetBrains Mono em `.woff2`, subset latino, para `assets/fonts/`. Instruções completas em [`assets/fonts/README.md`](assets/fonts/README.md). Não consigo baixar binários daqui. Sem elas o site cai nas fontes do sistema e perde a identidade tipográfica, mas continua funcionando
+- [x] ~~**#16 — Baixar as fontes.**~~ ✅ Resolvida em 25/08/2026. Space Grotesk, Inter e JetBrains Mono estão em `assets/fonts/`, em WOFF2 variável com subset latino (D53)
 - [ ] **#15 — Favicon.** Feito um provisório (D43): um `B` sobre violeta. Se quiser outra coisa, é decisão sua. Não bloqueia
 - [x] ~~**#20 — Obsidian Ink no lugar do Halcyon**~~ ✅ **Adicionado em 07/08/2026** (D48), na `/work` e no Selected work da Home
 - [ ] **#22 — Corrigir os fundamentos do Obsidian Ink.** ⚠️ **Ainda abertos** — reverifiquei no momento de adicionar: sem `<title>`, sem `lang` no `<html>`, sem meta description, sem canonical, sem favicon. Você havia optado por corrigir antes de publicar, depois pediu para adicionar mesmo assim; adicionei e mantenho o lembrete. Isso contradiz "Accessibility (WCAG AA)" e "On-page SEO", vendidos como entregáveis na página Services. O que já está certo no site: `<h1>` único e `alt` nas 14 imagens
@@ -249,7 +251,7 @@ Bloqueiam a redação final da copy e o início do desenvolvimento. Espelhado na
 
 1. ✅ **Site construído e verificado.** As 5 páginas, o 404, o CSS, o JS, o SEO e os assets estão prontos.
 2. **Revisar a copy.** Escrevi todo o texto em inglês (D26) sem nenhuma afirmação factual verificável. Ele é seu para editar — é a parte que mais se beneficia da sua voz.
-3. **Suas quatro ações:** baixar as fontes (#16), testar o envio do formulário (#17), decidir o favicon (#15) e, no deploy, preencher a URL de produção (#10).
+3. **Suas três ações:** testar o envio do formulário (#17), decidir o favicon (#15) e, no deploy, preencher a URL de produção (#10).
 4. **Decidir sobre P13:** agora que a About está montada, ela se sustenta como página própria ou é melhor fundi-la na Home e reduzir para 4 páginas? Esta era a decisão que dependia de ver a página pronta.
 5. **Decidir sobre P14:** a `/work` tem 3 casos demonstrativos com imagens em `[PLACEHOLDER]`. Continua sendo o ponto mais fraco do site até existir um projeto real.
 

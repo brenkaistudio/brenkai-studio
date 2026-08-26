@@ -80,7 +80,7 @@
   --hero-ease: cubic-bezier(.16, .78, .18, 1);
 
   /* --- Type ------------------------------------------------------------- */
-  --font-display: 'Archivo', 'Arial Black', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono:    'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace;
 

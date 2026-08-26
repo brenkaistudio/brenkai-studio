@@ -52,9 +52,7 @@
   margin-bottom: var(--sp-6);
   font-size: var(--fs-display-xl);          /* fallback, no container queries */
   /* 15cqw, not 16: the binding word is "properly." at 9 characters, and at
-     16cqw it cleared a 320px column by only 10px. That was measured with the
-     system fallback font — Archivo is not installed yet (pendência #16) and
-     will change the metrics. Re-measure the tightest width once it lands. */
+     16cqw it cleared a 320px column by only 10px. */
   /* Floor is 2.5rem, not the 2.75rem design.md gives for display-xl. At
      2.75rem the headline cleared a 265px column by 10px — 4% — and that
      floor was written when the hero ran full width, before the mock took
@@ -413,4 +411,3 @@
      be reset here or the mock renders empty. */
   .hero-demo__premium { opacity: 1; transform: none; filter: none; }
 }
-  

@@ -154,7 +154,7 @@
 .numbered__num {
   font-family: var(--font-display);
   font-size: var(--fs-heading);
-  font-weight: 900;
+  font-weight: 700;
   color: var(--text-decor);
   line-height: 1;
 }
@@ -315,7 +315,7 @@
 .project__name {
   font-family: var(--font-display);
   font-size: var(--fs-heading);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: var(--ls-heading);
   color: var(--text-title);
 }
@@ -436,7 +436,7 @@
 .marquee__item {
   font-family: var(--font-display);
   font-size: var(--fs-marquee);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: var(--ls-heading);
   text-transform: uppercase;
   color: var(--text-title);

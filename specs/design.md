@@ -171,15 +171,15 @@ Três famílias, cada uma com um trabalho definido. Todas self-hosted em `assets
 
 | Família | Papel | Pesos |
 |---|---|---|
-| **Archivo** | Display — títulos de página e de seção | 700, 800, 900 |
+| **Space Grotesk** | Display — títulos de página e de seção | 500, 600, 700 |
 | **Inter** | Corpo — parágrafos, labels, navegação | 400, 500, 600 |
 | **JetBrains Mono** | Acento — kickers, metadados, numerais, tags | 400, 500 |
 
 A monoespaçada é o gesto característico do estúdio. Substitui o acento manuscrito da referência e reforça a direção "engenharia à mostra". Usar com parcimônia: kickers de seção, ano e categoria dos projetos, rótulos de campo, tags de tecnologia. **Nunca** em parágrafos.
 
 **Regras:**
-- Títulos display: Archivo 900, `uppercase`, `letter-spacing: -0.03em`, `line-height: 0.92`.
-- Títulos de seção: Archivo 800, caixa normal, `letter-spacing: -0.02em`, `line-height: 1.05`.
+- Títulos display: Space Grotesk 700, `uppercase`, `letter-spacing: -0.03em`, `line-height: 0.92`.
+- Títulos de seção: Space Grotesk 700, caixa normal, `letter-spacing: -0.02em`, `line-height: 1.05`.
 - Corpo: Inter 400, `line-height: 1.6`, largura máxima de 65 caracteres.
 - Kickers: JetBrains Mono 500, `uppercase`, `letter-spacing: 0.18em`, 12px, cor `action`, precedido por um traço de 24px.
 - Nunca justificar texto. Nunca sublinhar, exceto links dentro de parágrafo.
@@ -190,16 +190,16 @@ Razão 1.25 no celular, 1.333 no desktop. Display usa `clamp()` e nunca salta en
 
 | Token | Celular | Desktop | Fonte | Uso |
 |---|---|---|---|---|
-| `display-xl` | 44px | 128px | Archivo 900 | `<h1>` do hero |
-| `display-lg` | 36px | 88px | Archivo 900 | `<h1>` das páginas internas |
-| `display-md` | 30px | 56px | Archivo 800 | Título de seção |
-| `heading` | 24px | 32px | Archivo 800 | Título de card, item de lista |
+| `display-xl` | 44px | 128px | Space Grotesk 700 | `<h1>` do hero |
+| `display-lg` | 36px | 88px | Space Grotesk 700 | `<h1>` das páginas internas |
+| `display-md` | 30px | 56px | Space Grotesk 700 | Título de seção |
+| `heading` | 24px | 32px | Space Grotesk 700 | Título de card, item de lista |
 | `subheading` | 20px | 24px | Inter 600 | Subtítulo |
 | `body-lg` | 17px | 19px | Inter 400 | Parágrafo do hero |
 | `body` | 16px | 16px | Inter 400 | Parágrafo padrão |
 | `body-sm` | 14px | 14px | Inter 400 | Texto do footer, apoio |
 | `mono` | 12px | 12px | JetBrains Mono 500 | Kicker, metadado |
-| `marquee` | 32px | 56px | Archivo 800 | Texto do marquee |
+| `marquee` | 32px | 56px | Space Grotesk 700 | Texto do marquee |
 
 Valores `clamp()`:
 ```
@@ -296,7 +296,7 @@ Máximo de **um** botão primário por dobra.
 **Card de projeto** (`/work`, Selected work)
 - Sem fundo nem borda — a imagem é o card
 - Imagem com raio 12px, proporção 4:3, `object-fit: cover`, saturação 90% no repouso
-- Abaixo da imagem: nome em Archivo 800 à esquerda; categoria e ano em monoespaçada 12px `ink-400` à direita
+- Abaixo da imagem: nome em Space Grotesk 700 à esquerda; categoria e ano em monoespaçada 12px `ink-400` à direita
 - Hover: saturação volta a 100%, escala 1.02 dentro de contêiner com `overflow: hidden`, e uma faixa desliza de baixo revelando uma linha de descrição e as tags de tecnologia
 - **Em toque, a descrição e as tags ficam sempre visíveis** — sem depender do hover
 - Enquanto os projetos forem demonstrativos, cada card exibe uma tag `DEMO` em monoespaçada, no canto superior esquerdo da imagem
@@ -332,7 +332,7 @@ O estúdio não tem imagens próprias ainda. Até que tenha, todo espaço de ima
 O "produto" é o trabalho do estúdio. Ele é apresentado como evidência, não como propaganda.
 
 - Cada projeto mostra **uma** imagem. Sem galeria, sem carrossel.
-- Nome do projeto em Archivo 800; categoria e ano em monoespaçada `ink-400`. A hierarquia deixa claro o que é nome e o que é metadado.
+- Nome do projeto em Space Grotesk 700; categoria e ano em monoespaçada `ink-400`. A hierarquia deixa claro o que é nome e o que é metadado.
 - As tecnologias aparecem como tags em monoespaçada 12px, com borda de 1px e raio 4px — nunca como logotipos.
 - Sem selo de prêmio, sem contador de métrica, sem depoimento sobreposto à imagem.
 - **Enquanto os casos forem demonstrativos, a tag `DEMO` é obrigatória e o subtítulo da página `/work` declara isso em texto.** Não apresentar demonstração como trabalho de cliente.
@@ -491,7 +491,7 @@ Todos os tokens deste arquivo vivem em `css/tokens.css`, dentro de `:root`. Nenh
   --focus-ring: var(--action);
 
   /* Tipografia */
-  --font-display: 'Archivo', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
