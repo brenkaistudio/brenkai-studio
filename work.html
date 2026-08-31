@@ -83,9 +83,9 @@
   <section class="page-head">
     <div class="container">
       <p class="kicker">Our work</p>
-      <h1 class="display-lg">Concept<br><span class="grad">pieces</span>.</h1>
-      <p class="lede">Brenkai is a new studio, so there is no client back-catalogue to show you. Everything below was built in-house to demonstrate how we work, and each one is labelled a demo — calling it anything else would undo the point of the page.</p>
-      <p class="lede" style="margin-top: var(--sp-4)">The first two are live. Open them, click through, try them on your phone. A site you can actually use is better evidence than a screenshot of one.</p>
+      <h1 class="display-lg">Selected<br><span class="grad">work</span>.</h1>
+      <p class="lede">The first is client work — a restaurant in Davie, Florida, live and taking orders. The rest are demonstrations we built in-house, and they carry a label saying so. Mixing the two without telling you which is which would undo the point of the page.</p>
+      <p class="lede" style="margin-top: var(--sp-4)">All three are live. Open them, click through, try them on your phone. A site you can actually use is better evidence than a screenshot of one.</p>
     </div>
   </section>
 
@@ -93,8 +93,35 @@
     <div class="container">
       <div class="work-grid">
 
-        <!-- Demo badge is mandatory while no real client work exists (D22).
-             BrightSmile is a live demonstration site we built ourselves, not
+        <!-- Alta Vaca Grill — the first real client project (D54). No DEMO
+             badge: the badge marks demonstrations, and applying it here would
+             misrepresent client work as a mock. The two below it keep theirs. -->
+        <article class="project reveal">
+          <div class="project__media">
+            <a class="project__media-link" href="https://www.altavaca.com/"
+               target="_blank" rel="noopener noreferrer" tabindex="-1">
+              <img class="project__img" src="assets/img/work-altavaca.jpg" width="1200" height="900"
+                   alt="The Alta Vaca Grill home page: a headline reading Fire makes the difference, over a photograph of steak on a charcoal grill."
+                   loading="lazy" decoding="async">
+            </a>
+          </div>
+          <div class="project__foot">
+            <h2 class="project__name">Alta Vaca Grill</h2>
+            <span class="project__meta">Restaurant · 2026</span>
+          </div>
+          <p class="project__desc">A single page for an Argentine parrilla in Davie, Florida: the menu, the lunch specials, the reviews and how to find them — plus online ordering, and an English/Spanish switch for a neighbourhood that speaks both.</p>
+          <div class="project__tags">
+            <span class="tag">Next.js</span><span class="tag">EN / ES</span><span class="tag">Online ordering</span>
+          </div>
+          <p class="project__live">
+            <a class="link" href="https://www.altavaca.com/" target="_blank" rel="noopener noreferrer">
+              <span>View live site</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+          </p>
+        </article>
+
+        <!-- BrightSmile is a live demonstration site we built ourselves, not
              a client project — hence the badge stays. -->
         <article class="project reveal">
           <div class="project__media">
@@ -146,21 +173,6 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
             </a>
           </p>
-        </article>
-
-        <article class="project reveal">
-          <div class="project__media">
-            <div class="project__placeholder" aria-hidden="true"><span>[Placeholder: image]</span></div>
-            <span class="project__badge">Demo</span>
-          </div>
-          <div class="project__foot">
-            <h2 class="project__name">Atlas</h2>
-            <span class="project__meta">Studio portfolio · 2026</span>
-          </div>
-          <p class="project__desc">A portfolio layout for a small practice — work first, words second, and a contact route visible from every screen.</p>
-          <div class="project__tags">
-            <span class="tag">Portfolio</span><span class="tag">UX design</span><span class="tag">Responsive</span>
-          </div>
         </article>
 
       </div>

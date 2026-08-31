@@ -112,7 +112,7 @@ Rotas de sistema (não contam como páginas de conteúdo): `404`, `/sitemap.xml`
 2. **Grade de projetos** — layout assimétrico em duas colunas com deslocamento vertical. Cada card: imagem, nome, categoria, ano; ao passar o mouse, revela uma linha de descrição e as tecnologias.
 3. **Fechamento** — CTA.
 
-> ⚠️ Enquanto não houver projetos reais, cada card deve exibir um rótulo visível de demonstração e o subtítulo da página deve deixar isso explícito. Não apresentar demonstração como trabalho entregue a cliente.
+> ⚠️ **A tag `DEMO` marca demonstração, não "todo card".** Desde 25/08/2026 existe trabalho de cliente real na página (Alta Vaca Grill, D54), e ele **não** leva a tag — colocá-la ali representaria mal o que é. Os casos construídos em casa continuam obrigados a exibi-la, e o subtítulo da página declara qual é qual. A regra original (D22) valia enquanto **todos** os casos eram demonstrativos.
 
 ### `/about` About
 1. **Cabeçalho** — título display em três linhas.

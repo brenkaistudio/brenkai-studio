@@ -210,8 +210,8 @@
     <div class="container">
       <div class="section__head">
         <p class="kicker">Selected work</p>
-        <h2 class="display-md">Concept <span class="grad">pieces</span></h2>
-        <p class="lede" style="margin-top: var(--sp-4)">We're a new studio, so everything below is a demonstration built in-house — not client work. Labelled as such, because pretending otherwise would be the opposite of the point.</p>
+        <h2 class="display-md">Selected <span class="grad">work</span></h2>
+        <p class="lede" style="margin-top: var(--sp-4)">One client project and two demonstrations we built in-house. The demos are labelled, because showing you both without saying which is which would be the opposite of the point.</p>
       </div>
 
       <!-- Sticky stack. --stack-i is the inline-style exception allowed by
@@ -220,7 +220,40 @@
            two would fight over the same property. -->
       <div class="stack">
 
+        <!-- Alta Vaca Grill — first real client project (D54). No DEMO badge:
+             that badge marks demonstrations, and putting it on client work
+             would misrepresent it. Atlas moved off the Home when this arrived
+             — it was the only invented case and the only one with no link. -->
         <div class="stack__item" style="--stack-i: 0">
+          <article class="project stack__card">
+            <div class="project__media">
+              <a class="project__media-link" href="https://www.altavaca.com/"
+                 target="_blank" rel="noopener noreferrer" tabindex="-1">
+                <img class="project__img" src="assets/img/work-altavaca.jpg" width="1200" height="900"
+                     alt="The Alta Vaca Grill home page: a headline reading Fire makes the difference, over a photograph of steak on a charcoal grill."
+                     loading="lazy" decoding="async">
+              </a>
+            </div>
+            <div>
+              <div class="project__foot">
+                <h3 class="project__name">Alta Vaca Grill</h3>
+                <span class="project__meta">Restaurant · 2026</span>
+              </div>
+              <p class="project__desc">A single page for an Argentine parrilla in Davie, Florida: menu, lunch specials, reviews and directions — plus online ordering and an English/Spanish switch.</p>
+              <div class="project__tags">
+                <span class="tag">Next.js</span><span class="tag">EN / ES</span><span class="tag">Online ordering</span>
+              </div>
+              <p class="project__live">
+                <a class="link" href="https://www.altavaca.com/" target="_blank" rel="noopener noreferrer">
+                  <span>View live site</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                </a>
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="stack__item" style="--stack-i: 1">
           <article class="project stack__card">
             <div class="project__media">
               <a class="project__media-link" href="https://brightsmile-dental-sage.vercel.app/"
@@ -250,7 +283,7 @@
           </article>
         </div>
 
-        <div class="stack__item" style="--stack-i: 1">
+        <div class="stack__item" style="--stack-i: 2">
           <article class="project stack__card">
             <div class="project__media">
               <a class="project__media-link" href="https://obsidian-ink-kappa.vercel.app/"
@@ -276,25 +309,6 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
                 </a>
               </p>
-            </div>
-          </article>
-        </div>
-
-        <div class="stack__item" style="--stack-i: 2">
-          <article class="project stack__card">
-            <div class="project__media">
-              <div class="project__placeholder" aria-hidden="true"><span>[Placeholder: image]</span></div>
-              <span class="project__badge">Demo</span>
-            </div>
-            <div>
-              <div class="project__foot">
-                <h3 class="project__name">Atlas</h3>
-                <span class="project__meta">Studio portfolio · 2026</span>
-              </div>
-              <p class="project__desc">A portfolio layout for a small practice — work first, words second, and a contact route visible from every screen.</p>
-              <div class="project__tags">
-                <span class="tag">Portfolio</span><span class="tag">UX design</span><span class="tag">Responsive</span>
-              </div>
             </div>
           </article>
         </div>
